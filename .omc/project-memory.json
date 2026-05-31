@@ -1,0 +1,67 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1780240227037,
+  "projectRoot": "/Users/nb1003918/Documents/Coding/side-proj/365-Days-Of-LeetCode",
+  "techStack": {
+    "languages": [
+      {
+        "name": "Go",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "go.mod"
+        ]
+      }
+    ],
+    "frameworks": [],
+    "packageManager": "go",
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": "cd /Users/nb1003918/Documents/Coding/side-proj/365-Days-Of-LeetCode/January/002 && rtk go test ./...",
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [],
+    "gitBranches": {
+      "defaultBranch": "main",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "January": {
+      "path": "January",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1780240226886,
+      "keyFiles": []
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "January/001/001_01_Jan_26_test.go",
+      "accessCount": 1,
+      "lastAccessed": 1780240256682,
+      "type": "file"
+    },
+    {
+      "path": "January/002/002_02_Jan_26_test.go",
+      "accessCount": 1,
+      "lastAccessed": 1780240268607,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}
