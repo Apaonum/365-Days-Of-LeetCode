@@ -65,6 +65,8 @@ waterStartTime.length == waterDuration.length == m
 1 <= landStartTime[i], landDuration[i], waterStartTime[j], waterDuration[j] <= 10^5
 */
 
+// Solution: Have 2 section -> 1. water to land time and land to water time
+
 package main
 
 import (
@@ -78,6 +80,7 @@ type Ride struct {
 }
 
 func earliestFinishTime(landStartTime []int, landDuration []int, waterStartTime []int, waterDuration []int) int {
+	// Check minimum time of land to water or water to land
 	ans1 := solve(landStartTime, landDuration, waterStartTime, waterDuration)
 	ans2 := solve(waterStartTime, waterDuration, landStartTime, landDuration)
 	return min(ans1, ans2)
@@ -90,16 +93,19 @@ func solve(firstS, firstD, secondS, secondD []int) int {
 		second[i] = Ride{s: secondS[i], d: secondD[i]}
 	}
 
+	// Sorted the second ride by start time
 	sort.Slice(second, func(i, j int) bool {
 		return second[i].s < second[j].s
 	})
 
+	// Defined prefix arrays and find minimum duration (from left to right)
 	prefMinD := make([]int, n)
 	prefMinD[0] = second[0].d
 	for i := 1; i < n; i++ {
 		prefMinD[i] = min(prefMinD[i-1], second[i].d)
 	}
 
+	// Defined suffix arrays and find minimum finish time (s + d)
 	suffMinEnd := make([]int, n)
 	suffMinEnd[n-1] = second[n-1].s + second[n-1].d
 	for i := n - 2; i >= 0; i-- {
@@ -108,6 +114,7 @@ func solve(firstS, firstD, secondS, secondD []int) int {
 
 	best := math.MaxInt64
 
+	// loop
 	for i := 0; i < len(firstS); i++ {
 		T := firstS[i] + firstD[i]
 
