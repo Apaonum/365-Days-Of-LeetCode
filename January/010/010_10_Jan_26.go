@@ -1,5 +1,5 @@
 /*
-3751. Total Waviness of Numbers in Range I | Medium
+3753. Total Waviness of Numbers in Range II | Hard
 You are given two integers num1 and num2 representing an inclusive range [num1, num2].
 
 The waviness of a number is defined as the total count of its peaks and valleys:
@@ -20,6 +20,7 @@ Output: 3
 Explanation:
 
 In the range [120, 130]:
+
 120: middle digit 2 is a peak, waviness = 1.
 121: middle digit 2 is a peak, waviness = 1.
 130: middle digit 3 is a peak, waviness = 1.
@@ -35,6 +36,7 @@ Output: 3
 Explanation:
 
 In the range [198, 202]:
+
 198: middle digit 9 is a peak, waviness = 1.
 201: middle digit 0 is a valley, waviness = 1.
 202: middle digit 0 is a valley, waviness = 1.
@@ -55,6 +57,7 @@ Number 4848: the second digit 8 is a peak, and the third digit 4 is a valley, gi
 
 Constraints:
 
-1 <= num1 <= num2 <= 10^5
+1 <= num1 <= num2 <= 10^15
 */ 
+
 package main

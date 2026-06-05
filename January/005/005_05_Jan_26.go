@@ -32,3 +32,33 @@ Constraints:
 */ 
 
 package main
+
+import (
+	"math"
+	"sort"
+)
+
+func minimumAbsDifference(arr []int) [][]int {
+	// 1. ASC Sorting
+	sort.Ints(arr)
+	
+	// set initial of minDiff to Maximum values
+	minDiff := math.MaxInt32 
+	var result [][]int
+	
+	// 2. Loop Check
+	for i := 1; i < len(arr); i++ {
+		diff := arr[i] - arr[i-1]
+		
+		if diff < minDiff {
+			// If found closer gap will update minDiff then clean old answer
+			minDiff = diff
+			result = [][]int{{arr[i-1], arr[i]}}
+		} else if diff == minDiff {
+			// Append when find the same pair gap
+			result = append(result, []int{arr[i-1], arr[i]})
+		}
+	}
+	
+	return result
+}
