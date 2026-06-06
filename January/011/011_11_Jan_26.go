@@ -33,3 +33,20 @@ n is even.
 -10^5 <= candyType[i] <= 10^5
 */ 
 package main
+
+
+func distributeCandies(candyType []int) int {
+	// Prototype created Map in condition save memory (Set Simulation)
+	uniqueCandies := make(map[int]struct{})
+	
+	// Input all candies to map (From SET signature will replace same candy type)
+	for _, candy := range candyType {
+		uniqueCandies[candy] = struct{}{}
+	}
+	
+	// Doctor quota
+	maxAllowed := len(candyType) / 2
+	
+	// return minimum of  "unique candies" กับ "allowed quota"
+	return min(len(uniqueCandies), maxAllowed)
+}

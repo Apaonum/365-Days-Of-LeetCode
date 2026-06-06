@@ -66,3 +66,31 @@ waterStartTime.length == waterDuration.length == m
 */ 
 
 package main
+
+import "math"
+
+func earliestFinishTime(landStartTime []int, landDuration []int, waterStartTime []int, waterDuration []int) int {
+	// Initial Infinity
+	best := math.MaxInt32
+
+	// loop matching land rides (i) and water rides (j) 
+	for i := 0; i < len(landStartTime); i++ {
+		for j := 0; j < len(waterStartTime); j++ {
+			
+			// Plan A: Playing land then water
+			finishLand := landStartTime[i] + landDuration[i]
+			startWater := max(finishLand, waterStartTime[j]) // wait water opened
+			planA := startWater + waterDuration[j]
+
+			// Plan B: Playing water then land
+			finishWater := waterStartTime[j] + waterDuration[j]
+			startLand := max(finishWater, landStartTime[i])
+			planB := startLand + landDuration[i]
+
+			// Update
+			best = min(best, planA, planB)
+		}
+	}
+
+	return best
+}

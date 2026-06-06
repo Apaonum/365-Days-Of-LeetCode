@@ -57,4 +57,61 @@ Constraints:
 
 1 <= num1 <= num2 <= 10^5
 */ 
+
+
 package main
+
+import "strconv"
+
+func totalWaviness(num1 int, num2 int) int {
+	total := 0
+	
+	// 1. Loop all number in period
+	for i := num1; i <= num2; i++ {
+		// 2. Convert to String for checking
+		s := strconv.Itoa(i)
+		n := len(s)
+		
+		// 3. If not bigger than 3 digits will skip. Cause it's not have a peak
+		if n < 3 {
+			continue
+		}
+		
+		// 4. Check middle digit
+		for j := 1; j < n-1; j++ {
+			curr := s[j]
+			prev := s[j-1]
+			next := s[j+1]
+			
+			// 5. Check is peak or valley
+			isPeak := curr > prev && curr > next
+			isValley := curr < prev && curr < next
+			
+			if isPeak || isValley {
+				total++
+			}
+		}
+	}
+	
+	return total
+}
+
+
+// Fastest compile
+
+func totalWavinessFastest(num1 int, num2 int) int {
+    ret := 0
+    for i := num1; i <= num2; i++ {
+        if i < 100 { continue }
+        x := i
+        last1, last2 := x%100/10, x%10
+        x /= 100
+        for x != 0 {
+            y := x%10
+            if (last1-y)*(last1-last2) > 0 { ret++ }
+            last1, last2 = y, last1
+            x /= 10
+        } 
+    }
+    return ret
+}
