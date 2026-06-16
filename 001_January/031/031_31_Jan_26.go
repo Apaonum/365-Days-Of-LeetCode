@@ -55,14 +55,14 @@ func pairSum(head *ListNode) int {
 	var prev *ListNode
 	curr := slow
 	for curr != nil {
-		nextTemp := curr.Next 
-		curr.Next = prev      
-		prev = curr           
-		curr = nextTemp 
+		nextTemp := curr.Next
+		curr.Next = prev
+		prev = curr
+		curr = nextTemp
 	}
 
 	maxSum := 0
-	p1 := head 
+	p1 := head
 	p2 := prev
 
 	for p2 != nil {
